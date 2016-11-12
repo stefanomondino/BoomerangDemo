@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "FC006D1B6908E3A4E0D65ED4161FE4F65D35DD64",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "55BC7E9070392739656A1401405874AC996C73EB" : 9223372036854775807,
+    "FC006D1B6908E3A4E0D65ED4161FE4F65D35DD64" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AE738045-6FBB-41B0-9FAF-04B93770952C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "55BC7E9070392739656A1401405874AC996C73EB" : "Boomerang\/",
+    "FC006D1B6908E3A4E0D65ED4161FE4F65D35DD64" : "BoomerangDemo\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BoomerangDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BoomerangDemo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:stefanomondino\/Boomerang.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "55BC7E9070392739656A1401405874AC996C73EB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:stefanomondino\/BoomerangDemo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FC006D1B6908E3A4E0D65ED4161FE4F65D35DD64"
+    }
+  ]
+}

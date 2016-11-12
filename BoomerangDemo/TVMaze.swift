@@ -19,18 +19,18 @@ extension TVMaze : TargetType {
     public var task: Task {
         return .request
     }
-
+    
     public var sampleData: Data {
         switch self {
         case .search:
             return "{}".data(using: String.Encoding.utf8)!
-        
+            
         case .image:
             return "".data(using: String.Encoding.utf8)!
             
+        }
     }
-    }
-
+    
     public var baseURL: URL {
         switch self {
         case .image(let url) :
@@ -40,7 +40,7 @@ extension TVMaze : TargetType {
             return URL(string: "http://api.tvmaze.com")!
         }
         
-         }
+    }
     public var path: String {
         switch self {
         case .search:
@@ -56,9 +56,9 @@ extension TVMaze : TargetType {
         switch self {
         case .search(let query):
             return ["q":query]
-        
+            
         case .image (_) :
-        return nil
+            return nil
         }
     }
 }
