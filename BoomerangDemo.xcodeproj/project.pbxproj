@@ -21,7 +21,6 @@
 		7B75087D1DD62C12006C82A0 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75087C1DD62C12006C82A0 /* Show.swift */; };
 		7BB5FD8B1DD6809100277174 /* Show.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB5FD8A1DD6809100277174 /* Show.json */; };
 		7BB5FD8C1DD6813800277174 /* Show.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB5FD8A1DD6809100277174 /* Show.json */; };
-		7BB5FD8E1DD6831B00277174 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB5FD8D1DD6831B00277174 /* ListViewModel.swift */; };
 		7BB5FD911DD6855C00277174 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB5FD901DD6855C00277174 /* ViewModelFactory.swift */; };
 		7BB5FD931DD6894100277174 /* ShowListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB5FD921DD6894000277174 /* ShowListViewModel.swift */; };
 		7BB5FD961DD68D5E00277174 /* ShowItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB5FD941DD68D5E00277174 /* ShowItemCollectionViewCell.swift */; };
@@ -60,7 +59,6 @@
 		7B7508791DD62BF3006C82A0 /* Response+Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Response+Gloss.swift"; sourceTree = "<group>"; };
 		7B75087C1DD62C12006C82A0 /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		7BB5FD8A1DD6809100277174 /* Show.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Show.json; sourceTree = "<group>"; };
-		7BB5FD8D1DD6831B00277174 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		7BB5FD901DD6855C00277174 /* ViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		7BB5FD921DD6894000277174 /* ShowListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowListViewModel.swift; sourceTree = "<group>"; };
 		7BB5FD941DD68D5E00277174 /* ShowItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				7B7508521DD61E9E006C82A0 /* AppDelegate.swift */,
 				7B7508721DD6248E006C82A0 /* Router.swift */,
 				7BB5FD901DD6855C00277174 /* ViewModelFactory.swift */,
-				7BB5FD8D1DD6831B00277174 /* ListViewModel.swift */,
 				7B7508761DD62B45006C82A0 /* Network */,
 				7BB5FD8F1DD6854100277174 /* ShowList */,
 				7B7508561DD61E9E006C82A0 /* Main.storyboard */,
@@ -396,7 +393,6 @@
 				7B7508551DD61E9E006C82A0 /* ShowListViewController.swift in Sources */,
 				7B7508751DD62763006C82A0 /* TVMaze.swift in Sources */,
 				7BB5FD931DD6894100277174 /* ShowListViewModel.swift in Sources */,
-				7BB5FD8E1DD6831B00277174 /* ListViewModel.swift in Sources */,
 				7B75087A1DD62BF3006C82A0 /* SignalProducer+Gloss.swift in Sources */,
 				7B7508731DD6248E006C82A0 /* Router.swift in Sources */,
 				7BB5FD911DD6855C00277174 /* ViewModelFactory.swift in Sources */,

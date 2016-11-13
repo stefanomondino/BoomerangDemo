@@ -9,12 +9,13 @@
 import UIKit
 import Moya
 import ReactiveCocoa
+import ReactiveSwift
 import Boomerang
 
 class ShowListViewController: UIViewController, ViewModelBindable , UICollectionViewDelegateFlowLayout{
 
     var viewModel: ViewModelType?
-    
+    @IBOutlet weak var txt_query:UITextField?
     @IBOutlet weak var collectionView:UICollectionView?
     
     override func viewDidLoad() {
@@ -23,13 +24,17 @@ class ShowListViewController: UIViewController, ViewModelBindable , UICollection
         
     }
     func bindViewModel(_ viewModel: ViewModelType?) {
-        guard let vm = viewModel as? ListViewModel else {
+        guard let vm = viewModel as? ShowListViewModel else {
             return
         }
         self.viewModel = vm
         self.collectionView?.delegate = self
         self.collectionView?.bindViewModel(vm)
         vm.reload()
+        let flow = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
+        flow?.sectionInset = UIEdgeInsetsMake(80, 0, 30, 0)
+         //self.txt_query?.reactive.text <~ vm.queryString.producer.skipRepeats()
+        vm.queryString <~ self.txt_query!.reactive.continuousTextValues.skipNil()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

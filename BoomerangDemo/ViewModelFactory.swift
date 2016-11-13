@@ -11,8 +11,7 @@ import ReactiveSwift
 import Moya
 import Boomerang
 struct ViewModelFactory {
-    func showListViewModel() -> ListViewModel {
-        let s:SignalProducer<ModelStructure?,NSError> = Show.query("a").map {array in ModelStructure(array)}
-        return ShowListViewModel(dataProducer: s)
+    func showListViewModel() -> ListViewModelType {
+        return ShowListViewModel()
     }
 }

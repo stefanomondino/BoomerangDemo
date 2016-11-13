@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 import Boomerang
 
 final class ShowItemViewModel : ItemViewModelType {
@@ -24,14 +25,23 @@ final class ShowItemViewModel : ItemViewModelType {
     }
 }
 
-final class ShowListViewModel: ListViewModel {
-    required init() {}
+final class ShowListViewModel: ListViewModelType {
+    var dataHolder: ListDataHolderType = ListDataHolder.empty
+    let queryString = MutableProperty<String>("")
     
-    override func listIdentifiers() -> [ListIdentifier] {
+    func select(selection: SelectionType) -> ViewModelType {
+        return self
+    }
+    init() {
+        self.dataHolder = ListDataHolder(dataProducer: self.queryString.producer.flatMap(.latest){
+            return Show.query($0).map {array in ModelStructure(array)}
+        })
+    }
+     func listIdentifiers() -> [ListIdentifier] {
         return ["ShowItemCollectionViewCell"]
     }
     
-    override func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
+    func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
         return ShowItemViewModel(model: model)
     }
 }
