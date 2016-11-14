@@ -12,6 +12,7 @@ import Moya
 
 enum TVMaze {
     case search(String)
+    case detail(identifier:String)
     case image(URL)
 }
 
@@ -22,19 +23,20 @@ extension TVMaze : TargetType {
     
     public var sampleData: Data {
         switch self {
-        case .search:
-            return "{}".data(using: String.Encoding.utf8)!
+        
             
         case .image:
             return "".data(using: String.Encoding.utf8)!
-            
+        default:
+            return "{}".data(using: String.Encoding.utf8)!
         }
     }
     
     public var baseURL: URL {
         switch self {
         case .image(let url) :
-            return URL(string:"http://tvmazecdn.com")!
+            
+            return URL(string:(url.scheme! + "://" + url.host!))!
             
         default:
             return URL(string: "http://api.tvmaze.com")!
@@ -45,6 +47,8 @@ extension TVMaze : TargetType {
         switch self {
         case .search:
             return "search/shows"
+        case .detail(let identifier):
+            return "shows/\(identifier)"
         case .image(let url) :
             return url.path
         }
@@ -57,7 +61,7 @@ extension TVMaze : TargetType {
         case .search(let query):
             return ["q":query]
             
-        case .image (_) :
+        default :
             return nil
         }
     }

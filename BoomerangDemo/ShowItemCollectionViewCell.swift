@@ -15,6 +15,7 @@ class ShowItemCollectionViewCell: UICollectionViewCell, ViewModelBindable {
     var viewModel: ViewModelType?
     var disposable: CompositeDisposable?
     @IBOutlet weak var lbl_title:UILabel?
+    @IBOutlet weak var img_show:UIImageView?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +25,7 @@ class ShowItemCollectionViewCell: UICollectionViewCell, ViewModelBindable {
             return
         }
         self.lbl_title?.text = vm.title
+        self.img_show!.reactive.image <~ vm.image!.take(until: self.reactive.prepareForReuse)
+        
     }
 }

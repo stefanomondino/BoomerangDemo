@@ -11,7 +11,10 @@ import ReactiveSwift
 import Moya
 import Boomerang
 struct ViewModelFactory {
-    func showListViewModel() -> ListViewModelType {
+    static func showListViewModel() -> ShowListViewModel {
         return ShowListViewModel()
+    }
+    static func showDetailViewModel(model:Show) -> ShowDetailViewModel {
+        return ShowDetailViewModel(model: model)
     }
 }

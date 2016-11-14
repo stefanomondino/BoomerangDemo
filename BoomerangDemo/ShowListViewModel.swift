@@ -9,36 +9,32 @@
 import UIKit
 import ReactiveSwift
 import Boomerang
+import Result
 
-final class ShowItemViewModel : ItemViewModelType {
-    var model: ItemViewModelType.Model
-    var itemIdentifier: ListIdentifier = "ShowItemCollectionViewCell"
-    var title:String!
-    init(model:ModelType) {
-        
-        self.model = model
-        guard let show = model as? Show else {
-            return
-        }
-        
-        self.title = show.title ?? ""
-    }
-}
+
 
 final class ShowListViewModel: ListViewModelType {
     var dataHolder: ListDataHolderType = ListDataHolder.empty
     let queryString = MutableProperty<String>("")
     
     func select(selection: SelectionType) -> ViewModelType {
-        return self
+        guard let indexPath = selection as? IndexPath else {
+            return self
+        }
+         return ViewModelFactory.showDetailViewModel(model:self.modelAtIndex(indexPath) as! Show)
+
     }
     init() {
-        self.dataHolder = ListDataHolder(dataProducer: self.queryString.producer.flatMap(.latest){
-            return Show.query($0).map {array in ModelStructure(array)}
-        })
+        self.dataHolder = ListDataHolder(dataProducer:
+            SignalProducer<String,NoError>(value:"")
+            .flatMap(.latest) {[weak self] _ in  return Show.query(self?.queryString.value ?? "").map {array in ModelStructure(array)}})
+        self.queryString.producer.debounce(0.5, on: QueueScheduler.main).startWithResult { (result) in
+            self.reload()
+        }
+        
     }
      func listIdentifiers() -> [ListIdentifier] {
-        return ["ShowItemCollectionViewCell"]
+        return View.all()
     }
     
     func itemViewModel(_ model: ModelType) -> ItemViewModelType? {

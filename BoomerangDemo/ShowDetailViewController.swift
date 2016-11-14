@@ -1,35 +1,30 @@
 //
-//  ViewController.swift
+//  ShowDetailViewController.swift
 //  BoomerangDemo
 //
-//  Created by Stefano Mondino on 11/11/16.
+//  Created by Stefano Mondino on 14/11/16.
 //  Copyright © 2016 Stefano Mondino. All rights reserved.
 //
 
 import UIKit
-import Moya
-import ReactiveCocoa
-import ReactiveSwift
 import Boomerang
 
-class ShowListViewController: UIViewController, ViewModelBindable , UICollectionViewDelegateFlowLayout{
-
-    var viewModel: ListViewModelType?
-    @IBOutlet weak var txt_query:UITextField?
+class ShowDetailViewController: UIViewController , ViewModelBindable, UICollectionViewDelegateFlowLayout {
+    var viewModel: ShowDetailViewModel?
     @IBOutlet weak var collectionView:UICollectionView?
-    var disposable: CompositeDisposable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     }
-    
     func bindViewModel(_ viewModel: ViewModelType?) {
-        guard let vm = viewModel as? ShowListViewModel else {
+        guard let vm = viewModel as? ShowDetailViewModel else {
             return
         }
+        
         self.viewModel = vm
+        self.title = vm.title
         self.collectionView?.delegate = self
         self.collectionView?.bindViewModel(vm)
         vm.reload()
@@ -37,18 +32,9 @@ class ShowListViewController: UIViewController, ViewModelBindable , UICollection
         flow?.sectionInset = UIEdgeInsetsMake(80, 0, 30, 0)
         flow?.minimumInteritemSpacing = 0
         flow?.minimumLineSpacing = 0
-         //self.txt_query?.reactive.text <~ vm.queryString.producer.skipRepeats()
-
-        vm.queryString <~ self.txt_query!.reactive.continuousTextValues.skipNil().logEvents()
     }
-    
+  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.size.width/2, height: 300)
+        return CGSize(width: self.view.frame.size.width, height: 300)
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Router.from(self, viewModel: self.viewModel?.select(selection: indexPath)).execute()
-    }
-
-
 }
-
