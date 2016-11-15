@@ -21,19 +21,23 @@ final class ShowListViewModel: ListViewModelType {
         guard let indexPath = selection as? IndexPath else {
             return self
         }
-         return ViewModelFactory.showDetailViewModel(model:self.modelAtIndex(indexPath) as! Show)
-
+        let show = self.modelAtIndex(indexPath) as! Show
+        return ViewModelFactory.showDetailViewModel(model:show)
+        
     }
     init() {
         self.dataHolder = ListDataHolder(dataProducer:
             SignalProducer<String,NoError>(value:"")
-            .flatMap(.latest) {[weak self] _ in  return Show.query(self?.queryString.value ?? "").map {array in ModelStructure(array)}})
+                .flatMap(.latest) {[weak self] _ in  return Show.query(self?.queryString.value ?? "").map {array in ModelStructure(array)}}
+        
+        )
+        
         self.queryString.producer.debounce(0.5, on: QueueScheduler.main).startWithResult { (result) in
             self.reload()
         }
         
     }
-     func listIdentifiers() -> [ListIdentifier] {
+    func listIdentifiers() -> [ListIdentifier] {
         return View.all()
     }
     

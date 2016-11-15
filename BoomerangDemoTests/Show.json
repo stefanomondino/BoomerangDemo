@@ -1,6 +1,5 @@
 {
-    "score": 2.011618,
-    "show": {
+
         "id": 139,
         "url": "http://www.tvmaze.com/shows/139/girls",
         "name": "Girls",
@@ -52,5 +51,4 @@
                 "href": "http://api.tvmaze.com/episodes/621947"
             }
         }
-    }
 }

@@ -19,7 +19,9 @@ class ShowSpec: QuickSpec {
             context(" when initialized") {
                 
                 beforeEach {
-                    show = try! Show(json: JSONSerialization.jsonObject(with: Data.init(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "Show", ofType: "json")!)), options: []) as! JSON)!
+                   // show = try! Show(json: JSONSerialization.jsonObject(with: Data.init(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "Show", ofType: "json")!)), options: []) as! JSON)!
+                    
+                    show = try! Show(json: JSONSerialization.jsonObject(with:TVMaze.detail(identifier: "").sampleData ) as! JSON)
                 }
                 
                 it (" should always have a name") {

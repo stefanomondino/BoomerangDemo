@@ -36,7 +36,8 @@ struct Show : Decodable, ModelType {
         self.id = "id" <~~ json
         self.imageURL =  "image.original" <~~ json
     }
-    static var provider = ReactiveCocoaMoyaProvider<TVMaze>()
+    
+    static var provider = ReactiveCocoaMoyaProvider<TVMaze>(plugins: [NetworkLoggerPlugin(verbose: false)])
     static func query(_ query:String) -> SignalProducer<[Show],NSError> {
         
         return provider.request(token: .search(query))

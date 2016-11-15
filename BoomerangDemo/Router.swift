@@ -41,7 +41,14 @@ struct Router : RouterType {
         return UIViewControllerRouterAction.push(source: source, destination: destination)
         
     }
-    
+    public static func from<Source,DestinationViewModel> (_ source:Source, viewModel:DestinationViewModel)  -> RouterAction
+        where
+        Source : UINavigationController{
+            let destination = Storyboard.main.scene(identifier: .showDetail)
+            (destination as? ShowDetailViewController)?.bindViewModelAfterLoad(viewModel as? ViewModelType)
+            return UIViewControllerRouterAction.modal(source: source, destination: destination, completion: nil)
+            
+    }
     public static func root() -> UIViewController {
         let source = Storyboard.main.scene(identifier: .showList)
         (source as! ShowListViewController).bindViewModelAfterLoad(ViewModelFactory.showListViewModel())

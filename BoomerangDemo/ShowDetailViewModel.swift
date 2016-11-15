@@ -22,13 +22,13 @@ final class ShowDetailViewModel : ListViewModelType, ItemViewModelType {
         self.model = model
         self.title = model.title
         self.dataHolder = ListDataHolder(dataProducer: model.detail.map {ModelStructure([
-                ShowItemViewModel(model: $0)
+            ShowItemViewModel(model: $0)
             ])})
     }
     func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
         return model as? ItemViewModelType
     }
-    
+//
     func listIdentifiers() -> [ListIdentifier] {
         return View.all()
     }

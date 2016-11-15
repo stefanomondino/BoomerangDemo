@@ -18,6 +18,10 @@ def testing_pods
     pod 'Nimble'
 end
 
+target 'BoomerangTV' do
+    shared_pods
+end
+
 target 'BoomerangDemo' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   shared_pods
@@ -25,5 +29,7 @@ target 'BoomerangDemoTests' do
     inherit! :search_paths
     testing_pods
   end
+
+
 
 end

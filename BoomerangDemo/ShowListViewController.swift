@@ -11,7 +11,7 @@ import Moya
 import ReactiveCocoa
 import ReactiveSwift
 import Boomerang
-
+import Result
 class ShowListViewController: UIViewController, ViewModelBindable , UICollectionViewDelegateFlowLayout{
 
     var viewModel: ListViewModelType?
@@ -32,14 +32,15 @@ class ShowListViewController: UIViewController, ViewModelBindable , UICollection
         self.viewModel = vm
         self.collectionView?.delegate = self
         self.collectionView?.bindViewModel(vm)
-        vm.reload()
+        
         let flow = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
         flow?.sectionInset = UIEdgeInsetsMake(80, 0, 30, 0)
         flow?.minimumInteritemSpacing = 0
         flow?.minimumLineSpacing = 0
-         //self.txt_query?.reactive.text <~ vm.queryString.producer.skipRepeats()
-
+    
         vm.queryString <~ self.txt_query!.reactive.continuousTextValues.skipNil().logEvents()
+        
+        vm.reload()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

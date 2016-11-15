@@ -13,6 +13,7 @@ import Moya
 enum TVMaze {
     case search(String)
     case detail(identifier:String)
+    case schedule(country:String?, date:Date?)
     case image(URL)
 }
 
@@ -24,7 +25,8 @@ extension TVMaze : TargetType {
     public var sampleData: Data {
         switch self {
         
-            
+        case .detail :
+            return try! NSData(contentsOfFile: Bundle.main.path(forResource: "Show", ofType: "json")!) as Data
         case .image:
             return "".data(using: String.Encoding.utf8)!
         default:
@@ -47,6 +49,8 @@ extension TVMaze : TargetType {
         switch self {
         case .search:
             return "search/shows"
+        case .schedule:
+            return "schedule"
         case .detail(let identifier):
             return "shows/\(identifier)"
         case .image(let url) :
@@ -60,7 +64,17 @@ extension TVMaze : TargetType {
         switch self {
         case .search(let query):
             return ["q":query]
-            
+        case .schedule(let country, let date):
+            var d = [String:String]()
+            if (country != nil) {
+                d["country"] = country!
+            }
+            if (date != nil) {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                d["date"] = dateFormatter.string(from: date!)
+            }
+            return d
         default :
             return nil
         }
