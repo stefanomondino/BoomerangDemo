@@ -22,7 +22,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OnM-ky-rPV">
                         <rect key="frame" x="0.0" y="0.0" width="707" height="602"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="OnM-ky-rPV" secondAttribute="height" multiplier="9:16" priority="999" id="vO3-GL-tM2"/>
+                            <constraint firstAttribute="width" secondItem="OnM-ky-rPV" secondAttribute="height" multiplier="16:9" priority="999" id="vO3-GL-tM2"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K44-77-EoE">

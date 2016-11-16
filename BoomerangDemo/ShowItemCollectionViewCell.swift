@@ -18,7 +18,7 @@ class ShowItemCollectionViewCell: UICollectionViewCell, ViewModelBindable {
     @IBOutlet weak var img_show:UIImageView?
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     func bindViewModel(_ viewModel: ViewModelType?) {
         guard let vm = viewModel as? ShowItemViewModel else {
@@ -26,6 +26,7 @@ class ShowItemCollectionViewCell: UICollectionViewCell, ViewModelBindable {
         }
         self.lbl_title?.text = vm.title
         self.img_show!.reactive.image <~ vm.image!.take(until: self.reactive.prepareForReuse)
+        
         
     }
 }
